@@ -1,0 +1,5 @@
+unitypredict-engines>=1.0.0
+numpy
+pandas
+plotly
+matplotlib
