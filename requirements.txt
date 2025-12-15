@@ -1,5 +1,14 @@
 unitypredict-engines>=1.0.0
 numpy
 pandas
-plotly
+statsmodels
 matplotlib
+seaborn
+scispacy>=0.5.4
+spacy>=3.7.0,<3.8.0
+bert-score
+scikit-learn
+jiwer
+python-Levenshtein
+requests
+
