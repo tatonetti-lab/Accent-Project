@@ -71,21 +71,21 @@ def calculate_edit_distance_stem4(file_path1):
 
 def process_folder_for_distance(folder_path):
     """
-    Process all txt files in a folder and calculate WER based on filename.
+    Process all txt files in a folder and calculate Distance based on filename.
     
     Args:
         folder_path (str): Path to the folder containing txt files
     """
     # Get all txt files in the folder
     txt_files = [f for f in os.listdir(folder_path) if f.endswith('.txt')]
-    print("Processing for whisper X distance analysis.......")
+    print("Processing for whisper X distance analysis.......") #can be replaced with any ASR model
     for file_name in txt_files:
         # Get the base name without extension
         base_name = os.path.splitext(file_name)[0]
         full_path = os.path.join(folder_path, file_name)
         # actual_name = os.path.splitext(file_name)[3]
         # print(actual_name)
-        # Determine which WER calculation to use based on filename
+        # Determine which STEM distance calculation to use based on filename
         if base_name == "1C":
             print(f"\nProcessing {file_name} with STEM1...")
             calculate_edit_distance_stem1(full_path)
@@ -102,9 +102,8 @@ def process_folder_for_distance(folder_path):
         #   print(f"\nSkipping {file_name} - filename not recognized")
 
 if __name__ == "__main__":
-    # Example usage:
-    # process_folder_for_WER(r"path_to_your_folder")
     pass 
+
 
 
 process_folder_for_distance(r"output")
