@@ -212,13 +212,9 @@ Edit `config.json` to configure:
 - Reference texts for each STEM topic are hardcoded in the processing scripts
 - True entity sets for NER evaluation are defined per STEM topic
 
-## License
-
-[Specify your license here]
 
 ## Authors
-
-[Specify authors here]
+Yasman Fatapour, AI Research Data Scientist 
 
 ## Acknowledgments
 
