@@ -27,42 +27,16 @@ Accent/
 ├── requirements.txt            # Python dependencies
 │
 ├── Processing Scripts/
-│   ├── wer_processor.py       # WER calculation for transcriptions
-│   ├── wer_processor_corrected.py  # WER calculation for corrected transcriptions
+│   ├── wer_processor_corrected.py  # WER calculation for all the STEMs 
 │   ├── distance_processor.py # Edit distance calculations
 │   ├── json_processor.py     # Extracts corrected text from JSON responses
-│   │
-│   ├── Bertscore_1.py        # BERTScore evaluation for STEM1
-│   ├── Bertscore_2.py        # BERTScore evaluation for STEM2
-│   ├── Bertscore_3.py        # BERTScore evaluation for STEM3
-│   ├── Bertscore_4.py        # BERTScore evaluation for STEM4
-│   │
-│   ├── NER_STEM1.py          # Named Entity Recognition for STEM1
-│   ├── NER_STEM2.py          # Named Entity Recognition for STEM2
-│   ├── NER_STEM3.py          # Named Entity Recognition for STEM3
-│   ├── NER_STEM4.py          # Named Entity Recognition for STEM4
+│   ├── Bertscore.py        # BERTScore evaluation for STEM1- STEM4
+│   ├── NER_STEM.py          # Named Entity Recognition for STEM1-STEM4
 │
 ├── Analysis Scripts/
-│   ├── Mixed_effect.py       # Mixed-effects linear model analysis
-│   ├── Mixed_effect_Long_dt.py  # Long format data analysis
-│   ├── plot.py               # Visualization scripts
-│   ├── plot NER.py           # NER visualization
-│   └── Graphs-Comparision.py # Comparison graphs
+│   ├── Mixed_effect_Model.py       # Mixed-effects linear model analysis
 │
-├── Notebooks/
-│   ├── Accent.ipynb          # Main analysis notebook
-│   ├── Accent_Final_figures.ipynb  # Final figure generation
-│   ├── WER.ipynb             # WER analysis notebook
-│   ├── NER.ipynb             # NER analysis notebook
-│   └── Edit_Distance.ipynb   # Edit distance analysis
-│
-├── Data Files/
-│   ├── WER_by_Group_and_STEM*.csv  # WER results by group and STEM topic
-│   └── unitypredict_mocktool/      # Mock tool for local testing
-│
-└── Additional Files/
-    ├── AdditionalDockerCommands.txt  # Docker configuration
-    └── test.py                # Testing utilities
+
 ```
 
 ## STEM Topics
@@ -116,7 +90,7 @@ This will process audio files through the UnityPredict platform, transcribe them
 ### WER Analysis
 
 ```python
-from wer_processor import process_folder_for_WER
+from wer_processor_corrected import process_folder_for_WER
 process_folder_for_WER("path/to/transcription/folder")
 ```
 
@@ -124,30 +98,25 @@ process_folder_for_WER("path/to/transcription/folder")
 
 Run the appropriate script for each STEM topic:
 ```bash
-python Bertscore_1.py  # For STEM1
-python Bertscore_2.py  # For STEM2
-python Bertscore_3.py  # For STEM3
-python Bertscore_4.py  # For STEM4
+python Bertscore.py  
 ```
 
 ### NER Analysis
 
 Run NER extraction and evaluation:
 ```bash
-python NER_STEM1.py  # For STEM1
-python NER_STEM2.py  # For STEM2
-python NER_STEM3.py  # For STEM3
-python NER_STEM4.py  # For STEM4
+python NER.py  # For STEM1 through STEM4
+
 ```
 
 ### Statistical Analysis
 
 Run mixed-effects modeling:
 ```bash
-python Mixed_effect.py
+python Mixed_effect_model.py
 ```
 
-This analyzes the relationship between speaker group (Native vs. Non-Native) and WER, accounting for variability across participants and STEM topics.
+This analyzes the relationship between speaker group (Native vs. Non-Native), and Participant variation and WER, accounting for variability across participants and STEM topics.
 
 ## Dependencies
 
@@ -184,6 +153,7 @@ The project uses mixed-effects linear models to:
 Key findings from the analysis:
 - Non-Native speakers show significantly higher WER than Native speakers
 - STEM topics show substantial variation in baseline WER
+- participant variance get smaller as the ASR model output improves
 - The performance gap between groups remains relatively stable across topics
 
 ## Data Format
